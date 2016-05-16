@@ -25,3 +25,11 @@ h4 {
 input{
   color: black;
 }
+
+.rightAlign {
+  text-align: right;
+}
+
+.leftAlign {
+  text-align: left;
+}
