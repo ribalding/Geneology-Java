@@ -39,19 +39,17 @@ public class App{
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-  get("/form", (request, response) -> {
+  post("/familyForm", (request, response) -> {
     Map<String, Object> model = new HashMap<String, Object>();
-    String userFirstName = request.queryParams("userFirstName");
-    String userLastName = request.queryParams("userLastName");
+    String userName = request.queryParams("userName");
     String userPassword = request.queryParams("userPassword");
-    String fullName = userFirstName + " " + userLastName;
-    User newUser = User.findByName(fullName);
-    if (newUser.getPassword() == userPassword){
+    User newUser = User.findByName(userName);
+    if (newUser.getPassword().equals(userPassword)){
       model.put("template", "templates/form.vtl");
     } else {
+      model.put("template", "templates/index.vtl");
       boolean failedLogin = true;
       model.put("failedLogin", failedLogin);
-      model.put("template", "templates/index.vtl");
     }
     return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());

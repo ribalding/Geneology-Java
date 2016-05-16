@@ -15,20 +15,28 @@ public class UserTest{
     assertEquals(true, newUser instanceof User);
   }
 
-  @Test
-  public void validate_returnsFalseIfBlankFieldsAreEntered(){
-    boolean validation = User.validate("Ryan", "");
-    assertEquals(false, validation);
-  }
+  // @Test
+  // public void validate_returnsFalseIfBlankFieldsAreEntered(){
+  //   boolean validation = User.validate("Ryan", "");
+  //   assertEquals(false, validation);
+  // }
+
+  // @Test
+  // public void  addRelative_returnsCorrectNumberOfRelativesInArray(){
+  //   User newUser = new User("Ryan Harvey", "secretpassword");
+  //   newUser.save();
+  //   Relative newRelative = new Relative("Janice", "Mother", newUser.getId());
+  //   newRelative.save();
+  //   newUser.addRelative(newRelative);
+  //   List<Relative> newList = newUser.getRelatives();
+  //   assertEquals(1, newList.size());
+  // }
 
   @Test
-  public void  addRelative_returnsCorrectNumberOfRelativesInArray(){
+  public void findByName(){
     User newUser = new User("Ryan Harvey", "secretpassword");
     newUser.save();
-    Relative newRelative = new Relative("Janice", "Mother", newUser.getId());
-    newRelative.save();
-    newUser.addRelative(newRelative);
-    List<Relative> newList = newUser.getRelatives();
-    assertEquals(1, newList.size());
+    User foundUser = User.findByName("Ryan Harvey");
+    assertEquals(foundUser.getPassword(), "secretpassword");
   }
 }
