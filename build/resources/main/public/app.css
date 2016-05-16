@@ -21,3 +21,15 @@ h4 {
   color: #eaeaea;
   font-size: 5em;
 }
+
+.rightAlign {
+  text-align: right;
+}
+
+.leftAlign {
+  text-align: left;
+}
+
+input {
+  color: black;
+}
