@@ -23,18 +23,18 @@ public class User{
     return id;
   }
 
-  public static boolean validate(String userName, String pass){
-    if((userName == "") || (pass == "")){
+  public static boolean validate(String firstName, String lastName, String pass){
+    if((firstName == null) || (pass == null) || (lastName == null)){
       return false;
     } else {
       return true;
     }
   }
 
-  public List<Relative> getRelatives() {
-    String sql = "SELECT * FROM relatives WHERE user_id = :id;";
-
-  }
+  // public List<Relative> getRelatives() {
+  //   String sql = "SELECT * FROM relatives WHERE user_id = :id;";
+  //
+  // }
 
   public void save(){
     String sql = "INSERT INTO users (user_name, password) VALUES (:user_name, :password);";
@@ -70,6 +70,16 @@ public class User{
        String sql = "SELECT * FROM users WHERE id = :id";
        User newUser = con.createQuery(sql)
          .addParameter("id", id)
+         .executeAndFetchFirst(User.class);
+       return newUser;
+     }
+   }
+
+   public static User findByName(String name){
+     try (Connection con = DB.sql2o.open()) {
+       String sql = "SELECT * FROM users WHERE user_name = :user_name";
+       User newUser = con.createQuery(sql)
+         .addParameter("user_name", name)
          .executeAndFetchFirst(User.class);
        return newUser;
      }

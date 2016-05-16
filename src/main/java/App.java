@@ -16,5 +16,44 @@ public class App{
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/addUser", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      boolean confirmNewUser = false;
+      boolean failedNewUser = false;
+      String userFirstName = request.queryParams("userFirstName");
+      String userLastName = request.queryParams("userLastName");
+      String userPassword = request.queryParams("userPassword");
+      boolean validation = User.validate(userFirstName, userLastName, userPassword);
+      if (validation == true){
+        String fullName = userFirstName + " " + userLastName;
+        User newUser = new User(fullName, userPassword);
+        newUser.save();
+        confirmNewUser = true;
+        model.put("confirmNewUser", confirmNewUser);
+      } else if (validation == false){
+        failedNewUser = true;
+        model.put("failedNewUser", failedNewUser);
+      }
+      model.put("template", "templates/index.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+  get("/form", (request, response) -> {
+    Map<String, Object> model = new HashMap<String, Object>();
+    String userFirstName = request.queryParams("userFirstName");
+    String userLastName = request.queryParams("userLastName");
+    String userPassword = request.queryParams("userPassword");
+    String fullName = userFirstName + " " + userLastName;
+    User newUser = User.findByName(fullName);
+    if (newUser.getPassword() == userPassword){
+      model.put("template", "templates/form.vtl");
+    } else {
+      boolean failedLogin = true;
+      model.put("failedLogin", failedLogin);
+      model.put("template", "templates/index.vtl");
+    }
+    return new ModelAndView(model, layout);
+  }, new VelocityTemplateEngine());
   }
 }
