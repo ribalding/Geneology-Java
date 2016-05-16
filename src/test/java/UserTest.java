@@ -18,6 +18,11 @@ public class UserTest{
   @Test
   public void validate_returnsFalseIfBlankFieldsAreEntered(){
     boolean validation = User.validate("Ryan", "");
-    assertEquals(false, validation);     
+    assertEquals(false, validation);
+  }
+
+  @Test
+  public void  addRelative_returnsCorrectNumberOfRelativesInArray(){
+    User newUser = new User("Ryan Harvey", "secretpassword");
   }
 }
