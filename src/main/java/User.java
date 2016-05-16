@@ -5,7 +5,6 @@ public class User{
   private int id;
   private String user_name;
   private String password;
-  private List<Relative> relative_list;
 
   public User(String userName, String pass){
     user_name = userName;
@@ -32,8 +31,9 @@ public class User{
     }
   }
 
-  public void addRelative(Relative newRelative){
-    relative_list.add(newRelative);
+  public List<Relative> getRelatives() {
+    String sql = "SELECT * FROM relatives WHERE user_id = :id;";
+
   }
 
   public void save(){

@@ -24,5 +24,11 @@ public class UserTest{
   @Test
   public void  addRelative_returnsCorrectNumberOfRelativesInArray(){
     User newUser = new User("Ryan Harvey", "secretpassword");
+    newUser.save();
+    Relative newRelative = new Relative("Janice", "Mother", newUser.getId());
+    newRelative.save();
+    newUser.addRelative(newRelative);
+    List<Relative> newList = newUser.getRelatives();
+    assertEquals(1, newList.size());
   }
 }
