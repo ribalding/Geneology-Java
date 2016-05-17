@@ -13,7 +13,7 @@ public class App{
 
     get("/", (request, response) ->{
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/index.vtl");
+      model.put("template", "templates/tree.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -21,13 +21,12 @@ public class App{
       Map<String, Object> model = new HashMap<String, Object>();
       boolean confirmNewUser = false;
       boolean failedNewUser = false;
-      String userFirstName = request.queryParams("userFirstName");
-      String userLastName = request.queryParams("userLastName");
+      String userFullName = request.queryParams("userFullName");
       String userPassword = request.queryParams("userPassword");
-      boolean validation = User.validate(userFirstName, userLastName, userPassword);
+      String confirmPassword = request.queryParams("confirmPassword");
+      boolean validation = User.validate(userFullName, userPassword, confirmPassword);
       if (validation == true){
-        String fullName = userFirstName + " " + userLastName;
-        User newUser = new User(fullName, userPassword);
+        User newUser = new User(userFullName, userPassword);
         newUser.save();
         confirmNewUser = true;
         model.put("confirmNewUser", confirmNewUser);

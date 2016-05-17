@@ -23,8 +23,8 @@ public class User{
     return id;
   }
 
-  public static boolean validate(String firstName, String lastName, String pass){
-    if((firstName == null) || (pass == null) || (lastName == null)){
+  public static boolean validate(String fullName, String pass, String confirmPassword){
+    if((fullName == null) || (pass == null) || (confirmPassword == null)){
       return false;
     } else {
       return true;
