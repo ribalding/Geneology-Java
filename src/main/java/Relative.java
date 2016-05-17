@@ -6,32 +6,39 @@ public class Relative{
   private String relative_name;
   private String relation;
   private int user_id;
+  private int relation_type_id;
 
-  public Relative(String relative_name, String relation, int user_id){
+  public Relative(String relative_name, String relation, int user_id, int relation_type_id){
     this.relative_name = relative_name;
     this.relation = relation;
     this.user_id = user_id;
+    this.relation_type_id = relation_type_id;
   }
 
   public String getRelativeName(){
-    return relative_name;
+    return this.relative_name;
   }
 
   public String getRelation(){
-    return relation;
+    return this.relation;
   }
 
   public int getUserId(){
-    return user_id;
+    return this.user_id;
+  }
+
+  public int getRelationTypeId(){
+    return this.relation_type_id;
   }
 
   public void save(){
-    String sql = "INSERT INTO relatives (relative_name, relation, user_id) VALUES (:relative_name, :relation, :user_id);";
+    String sql = "INSERT INTO relatives (relative_name, relation, user_id, relation_type_id) VALUES (:relative_name, :relation, :user_id, :relation_type_id);";
     try(Connection con = DB.sql2o.open()){
       this.id = (int) con.createQuery(sql, true)
       .addParameter("relative_name", this.relative_name)
       .addParameter("relation", this.relation)
       .addParameter("user_id", this.user_id)
+      .addParameter("relation_type_id", this.relation_type_id)
       .executeUpdate()
       .getKey();
     }
@@ -85,6 +92,4 @@ public class Relative{
       .executeUpdate();
     }
   }
-
-
 }
