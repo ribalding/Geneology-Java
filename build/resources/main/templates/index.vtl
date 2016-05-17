@@ -23,7 +23,7 @@
     #if ($confirmNewUser)
       <h5 class="centered">Your Account Was Created Successfully!</h5>
     #elseif ($failedNewUser)
-      <h5 class="centered">Sorry, you must have left a field blank.  Try again.</h5>
+      <h5 class="centered">Sorry, something was not entered correctly.  Try again.</h5>
     #end
   </div>
 
@@ -37,6 +37,9 @@
       <div class="centered">
         <button type="submit" class="btn btn-success loginButton">Login</button>
       </div>
+      #if ($failedLogin)
+        <h5 class="centered">Sorry, your Name or Password was not entered Correctly.  Please Try Again.</h5>
+      #end
     </form>
   </div>
 </div>

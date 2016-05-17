@@ -39,4 +39,10 @@ public class UserTest{
     User foundUser = User.findByName("Ryan Harvey");
     assertEquals(foundUser.getPassword(), "secretpassword");
   }
+
+  @Test
+  public void validate_returnsTrueIfPasswordsMatch(){
+    boolean result = User.validate("Ryan", "stuff", "stuff");
+    assertEquals(true, result);
+  }
 }
