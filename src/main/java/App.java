@@ -13,7 +13,7 @@ public class App{
 
     get("/", (request, response) ->{
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/tree.vtl");
+      model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -182,6 +182,7 @@ public class App{
 
     String mothersSibling2Kid2Name = newUser.getMothersSibling2Kid2Name(relList);
     model.put("mothersSibling2Kid2Name", mothersSibling2Kid2Name);
+    model.put("userName", newUser);
 
     model.put("template", "templates/tree.vtl");
     return new ModelAndView(model, layout);
