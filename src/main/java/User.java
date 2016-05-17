@@ -7,6 +7,7 @@ public class User{
   private String password;
   private static boolean userNameCheck;
   private String relName;
+  private String momName;
 
   public User(String userName, String pass){
     user_name = userName;
@@ -50,183 +51,203 @@ public class User{
 
   public String getFatherName(List<Relative> relList){
     for(Relative rel : relList){
-      if(rel.getRelationTypeId() == 1)
+      if(rel.getRelationTypeId() == 1){
         relName = rel.getRelativeName();
         break;
+      }
+    }
+    return relName;
+  }
+
+    public String getPaternalGrandfatherName(List<Relative> relList){
+      for(Relative rel : relList){
+        if(rel.getRelationTypeId() == 2){
+          relName = rel.getRelativeName();
+          break;
+        }
       }
       return relName;
     }
 
-    public String getPaternalGrandfatherName(List<Relative> relList){
-      for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 2)
-          relName = rel.getRelativeName();
-          break;
-        }
-        return relName;
-      }
-
     public String getPaternalGrandmotherName(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 3)
+        if(rel.getRelationTypeId() == 3){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getFathersSibling1Name(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 4)
+        if(rel.getRelationTypeId() == 4){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getFathersSibling2Name(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 5)
+        if(rel.getRelationTypeId() == 5){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getFathersSibling1Kid1Name(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 6)
+        if(rel.getRelationTypeId() == 6){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getFathersSibling1Kid2Name(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 7)
+        if(rel.getRelationTypeId() == 7){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getFathersSibling2Kid1Name(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 8)
+        if(rel.getRelationTypeId() == 8){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getFathersSibling2Kid2Name(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 9)
+        if(rel.getRelationTypeId() == 9){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getMotherName(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 10)
+        if(rel.getRelationTypeId() == 10){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getMaternalGrandfatherName(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 11)
+        if(rel.getRelationTypeId() == 11){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getMaternalGrandmotherName(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 12)
+        if(rel.getRelationTypeId() == 12){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getMothersSibling1Name(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 13)
+        if(rel.getRelationTypeId() == 13){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getMothersSibling2Name(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 14)
+        if(rel.getRelationTypeId() == 14){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getMothersSibling1Kid1Name(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 15)
+        if(rel.getRelationTypeId() == 15){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getMothersSibling1Kid2Name(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 16)
+        if(rel.getRelationTypeId() == 16){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getMothersSibling2Kid1Name(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 17)
+        if(rel.getRelationTypeId() == 17){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getMothersSibling2Kid2Name(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 18)
+        if(rel.getRelationTypeId() == 18){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getUserSibling1Name(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 19)
+        if(rel.getRelationTypeId() == 19){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
     public String getUserSibling2Name(List<Relative> relList){
       for(Relative rel : relList){
-        if(rel.getRelationTypeId() == 20)
+        if(rel.getRelationTypeId() == 20){
           relName = rel.getRelativeName();
           break;
         }
-        return relName;
       }
+      return relName;
+    }
 
   public void save(){
     String sql = "INSERT INTO users (user_name, password) VALUES (:user_name, :password);";
