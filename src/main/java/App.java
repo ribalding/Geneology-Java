@@ -159,6 +159,30 @@ public class App{
     String userSibling2Name = newUser.getUserSibling2Name(relList);
     model.put("userSibling2Name", userSibling2Name);
 
+    String maternalGrandfatherName = newUser.getMaternalGrandfatherName(relList);
+    model.put("maternalGrandfatherName", maternalGrandfatherName);
+
+    String maternalGrandmotherName = newUser.getMaternalGrandmotherName(relList);
+    model.put("maternalGrandmotherName", maternalGrandmotherName);
+
+    String mothersSibling1Name = newUser.getMothersSibling1Name(relList);
+    model.put("mothersSibling1Name", mothersSibling1Name);
+
+    String mothersSibling2Name = newUser.getMothersSibling2Name(relList);
+    model.put("mothersSibling2Name", mothersSibling2Name);
+
+    String mothersSibling1Kid1Name = newUser.getMothersSibling1Kid1Name(relList);
+    model.put("mothersSibling1Kid1Name", mothersSibling1Kid1Name);
+
+    String mothersSibling1Kid2Name = newUser.getMothersSibling1Kid2Name(relList);
+    model.put("mothersSibling1Kid2Name", mothersSibling1Kid2Name);
+
+    String mothersSibling2Kid1Name = newUser.getMothersSibling2Kid1Name(relList);
+    model.put("mothersSibling2Kid1Name", mothersSibling2Kid1Name);
+
+    String mothersSibling2Kid2Name = newUser.getMothersSibling2Kid2Name(relList);
+    model.put("mothersSibling2Kid2Name", mothersSibling2Kid2Name);
+
     model.put("template", "templates/tree.vtl");
     return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
