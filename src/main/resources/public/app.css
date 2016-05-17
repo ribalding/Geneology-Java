@@ -64,7 +64,24 @@ input{
 .treeMargin {
   margin-top: 10em;
 }
-/*
+
+input {
+  max-width: 10em;
+}
+
+.updateClear {
+  max-height: 3em;
+  text-align: center;
+  margin-top: 30%;
+}
+
+
+
+
+
+
+
+
 .gpa {
 
 }
@@ -94,37 +111,7 @@ input{
 }
 .userSiblings {
   -webkit-animation-delay: 5s;
-}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -141,12 +128,12 @@ input{
  * Copyright (c) 2016 Daniel Eden
  */
 
-/*.animated {
+.animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-}*/
+}
 
 .animated.infinite {
   -webkit-animation-iteration-count: infinite;
