@@ -62,6 +62,14 @@ public class App{
     return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
 
+  get("/accountHome/:id", (request, response) -> {
+    Map<String, Object> model = new HashMap<String, Object>();
+    User newUser = User.find(Integer.parseInt(request.params("id")));
+    model.put("user", newUser);
+    model.put("template", "templates/accountHome.vtl");
+    return new ModelAndView(model, layout);
+  }, new VelocityTemplateEngine());
+
   get("/viewTree/:id", (request, response) -> {
     Map<String, Object> model = new HashMap<String, Object>();
     User newUser = User.find(Integer.parseInt(request.params("id")));
@@ -199,6 +207,8 @@ public class App{
     newUserSibling1.save();
     Relative newUserSibling2 = new Relative(userSibling2, "Sibling 2", newUser.getId(), 20);
     newUserSibling2.save();
+
+    newUser.treeNowExists();
 
     response.redirect("/viewTree/" + newUser.getId());
     return null;

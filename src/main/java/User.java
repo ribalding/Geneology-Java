@@ -8,10 +8,12 @@ public class User{
   private static boolean userNameCheck;
   private String relName;
   private Relative thisRel;
+  private boolean treeExists;
 
   public User(String userName, String pass){
     user_name = userName;
     password = pass;
+    treeExists = false;
   }
 
   public String getUserName(){
@@ -24,6 +26,14 @@ public class User{
 
   public int getId(){
     return id;
+  }
+
+  public void treeNowExists(){
+    treeExists = true;
+  }
+
+  public boolean getTreeExists(){
+    return treeExists;
   }
 
   public static boolean validate(String fullName, String pass, String confirmPassword){
