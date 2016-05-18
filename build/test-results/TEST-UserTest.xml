@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="UserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-05-18T19:26:23" hostname="epicodus-48.local" time="0.12">
+  <properties/>
+  <testcase name="getRelativeUpdated" classname="UserTest" time="0.12"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -31,6 +31,10 @@ public class Relative{
     return this.relation_type_id;
   }
 
+  public int getId(){
+    return this.id;
+  }
+
   public void save(){
     String sql = "INSERT INTO relatives (relative_name, relation, user_id, relation_type_id) VALUES (:relative_name, :relation, :user_id, :relation_type_id);";
     try(Connection con = DB.sql2o.open()){
@@ -59,11 +63,12 @@ public class Relative{
       Relative newRelative = (Relative) otherRelative;
       return this.getRelativeName().equals(newRelative.getRelativeName()) &&
              this.getUserId() == newRelative.getUserId() &&
-             this.getRelation().equals(newRelative.getRelation());
+             this.getRelation().equals(newRelative.getRelation()) &&
+             this.getRelationTypeId() == newRelative.getRelationTypeId();
     }
   }
 
-  public static Relative find(int id){
+  public static Relative find(int id, int user_id){
     try (Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM relatives WHERE id = :id";
       Relative newRelative = con.createQuery(sql)
@@ -73,12 +78,11 @@ public class Relative{
     }
   }
 
-  public void update(String user_name, String password) {
+  public void update(String name) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE relatives SET relative_name = :relative_name, relation = :relation WHERE id =:id";
+      String sql = "UPDATE relatives SET relative_name = :name WHERE id = :id";
       con.createQuery(sql)
-      .addParameter("relative_name", relative_name)
-      .addParameter("relation", relation)
+      .addParameter("name", name)
       .addParameter("id", this.id)
       .executeUpdate();
     }

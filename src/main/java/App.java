@@ -62,7 +62,77 @@ public class App{
     return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
 
-  post("/tree/:id", (request, response) -> {
+  get("/viewTree/:id", (request, response) -> {
+    Map<String, Object> model = new HashMap<String, Object>();
+    User newUser = User.find(Integer.parseInt(request.params("id")));
+
+
+    Relative father = newUser.getRelative(1);
+    model.put("fatherName", father.getRelativeName());
+
+    Relative mother = newUser.getRelative(10);
+    model.put("motherName", mother.getRelativeName());
+
+    Relative paternalGrandfather = newUser.getRelative(2);
+    model.put("paternalGrandfatherName", paternalGrandfather.getRelativeName());
+
+    Relative paternalGrandmother = newUser.getRelative(3);
+    model.put("paternalGrandmotherName", paternalGrandmother.getRelativeName());
+
+    Relative fathersSibling1= newUser.getRelative(4);
+    model.put("paternalFathersSibling1Name", fathersSibling1.getRelativeName());
+
+    Relative fathersSibling2 = newUser.getRelative(5);
+    model.put("paternalFathersSibling2Name", fathersSibling2.getRelativeName());
+
+    Relative fathersSibling1Kid1 = newUser.getRelative(6);
+    model.put("fathersSibling1Kid1Name", fathersSibling1Kid1.getRelativeName());
+
+    Relative fathersSibling1Kid2 = newUser.getRelative(7);
+    model.put("fathersSibling1Kid2Name", fathersSibling1Kid2.getRelativeName());
+
+    Relative fathersSibling2Kid1 = newUser.getRelative(8);
+    model.put("fathersSibling2Kid1Name", fathersSibling2Kid1.getRelativeName());
+
+    Relative fathersSibling2Kid2 = newUser.getRelative(9);
+    model.put("fathersSibling2Kid2Name", fathersSibling2Kid2.getRelativeName());
+
+    Relative userSibling1 = newUser.getRelative(19);
+    model.put("userSibling1Name", userSibling1.getRelativeName());
+
+    Relative userSibling2 = newUser.getRelative(20);
+    model.put("userSibling2Name", userSibling2.getRelativeName());
+
+    Relative maternalGrandfather = newUser.getRelative(11);
+    model.put("maternalGrandfatherName", maternalGrandfather.getRelativeName());
+
+    Relative maternalGrandmother = newUser.getRelative(12);
+    model.put("maternalGrandmotherName", maternalGrandmother.getRelativeName());
+
+    Relative mothersSibling1 = newUser.getRelative(13);
+    model.put("mothersSibling1Name", mothersSibling1.getRelativeName());
+
+    Relative mothersSibling2 = newUser.getRelative(14);
+    model.put("mothersSibling2Name", mothersSibling2.getRelativeName());
+
+    Relative mothersSibling1Kid1 = newUser.getRelative(15);
+    model.put("mothersSibling1Kid1Name", mothersSibling1Kid1.getRelativeName());
+
+    Relative mothersSibling1Kid2 = newUser.getRelative(16);
+    model.put("mothersSibling1Kid2Name", mothersSibling1Kid2.getRelativeName());
+
+    Relative mothersSibling2Kid1 = newUser.getRelative(17);
+    model.put("mothersSibling2Kid1Name", mothersSibling2Kid1.getRelativeName());
+
+    Relative mothersSibling2Kid2 = newUser.getRelative(18);
+    model.put("mothersSibling2Kid2Name", mothersSibling2Kid2.getRelativeName());
+
+    model.put("userName", newUser);
+    model.put("template", "templates/tree.vtl");
+    return new ModelAndView(model, layout);
+  }, new VelocityTemplateEngine());
+
+  post("/addTree/:id", (request, response) -> {
     Map<String, Object> model = new HashMap<String, Object>();
     User newUser = User.find(Integer.parseInt(request.params("id")));
 
@@ -130,70 +200,168 @@ public class App{
     Relative newUserSibling2 = new Relative(userSibling2, "Sibling 2", newUser.getId(), 20);
     newUserSibling2.save();
 
-    List<Relative> relList = newUser.getRelatives();
-    String fatherName = newUser.getRelativeName(relList, 1);
-    model.put("fatherName", fatherName);
+    response.redirect("/viewTree/" + newUser.getId());
+    return null;
+  });
 
-    String motherName = newUser.getRelativeName(relList, 10);
-    model.put("motherName", motherName);
+  get("familyForm/:id/update", (request, response) -> {
+    Map<String, Object> model = new HashMap<String, Object>();
+    User newUser = User.find(Integer.parseInt(request.params("id")));
 
-    String paternalGrandfatherName = newUser.getRelativeName(relList, 2);
-    model.put("paternalGrandfatherName", paternalGrandfatherName);
+    Relative father = newUser.getRelative(1);
+    model.put("fatherName", father.getRelativeName());
 
-    String paternalGrandmotherName = newUser.getRelativeName(relList, 3);
-    model.put("paternalGrandmotherName", paternalGrandmotherName);
+    Relative mother = newUser.getRelative(10);
+    model.put("motherName", mother.getRelativeName());
 
-    String fathersSibling1Name = newUser.getRelativeName(relList, 4);
-    model.put("paternalFathersSibling1Name", fathersSibling1Name);
+    Relative paternalGrandfather = newUser.getRelative(2);
+    model.put("paternalGrandfatherName", paternalGrandfather.getRelativeName());
 
-    String fathersSibling2Name = newUser.getRelativeName(relList, 5);
-    model.put("paternalFathersSibling2Name", fathersSibling2Name);
+    Relative paternalGrandmother = newUser.getRelative(3);
+    model.put("paternalGrandmotherName", paternalGrandmother.getRelativeName());
 
-    String fathersSibling1Kid1Name = newUser.getRelativeName(relList, 6);
-    model.put("fathersSibling1Kid1Name", fathersSibling1Kid1Name);
+    Relative fathersSibling1= newUser.getRelative(4);
+    model.put("fathersSibling1Name", fathersSibling1.getRelativeName());
 
-    String fathersSibling1Kid2Name = newUser.getRelativeName(relList, 7);
-    model.put("fathersSibling1Kid2Name", fathersSibling1Kid2Name);
+    Relative fathersSibling2 = newUser.getRelative(5);
+    model.put("fathersSibling2Name", fathersSibling2.getRelativeName());
 
-    String fathersSibling2Kid1Name = newUser.getRelativeName(relList, 8);
-    model.put("fathersSibling2Kid1Name", fathersSibling2Kid1Name);
+    Relative fathersSibling1Kid1 = newUser.getRelative(6);
+    model.put("fathersSibling1Kid1Name", fathersSibling1Kid1.getRelativeName());
 
-    String fathersSibling2Kid2Name = newUser.getRelativeName(relList, 9);
-    model.put("fathersSibling2Kid2Name", fathersSibling2Kid2Name);
+    Relative fathersSibling1Kid2 = newUser.getRelative(7);
+    model.put("fathersSibling1Kid2Name", fathersSibling1Kid2.getRelativeName());
 
-    String userSibling1Name = newUser.getRelativeName(relList, 19);
-    model.put("userSibling1Name", userSibling1Name);
+    Relative fathersSibling2Kid1 = newUser.getRelative(8);
+    model.put("fathersSibling2Kid1Name", fathersSibling2Kid1.getRelativeName());
 
-    String userSibling2Name = newUser.getRelativeName(relList, 20);
-    model.put("userSibling2Name", userSibling2Name);
+    Relative fathersSibling2Kid2 = newUser.getRelative(9);
+    model.put("fathersSibling2Kid2Name", fathersSibling2Kid2.getRelativeName());
 
-    String maternalGrandfatherName = newUser.getRelativeName(relList, 11);
-    model.put("maternalGrandfatherName", maternalGrandfatherName);
+    Relative userSibling1 = newUser.getRelative(19);
+    model.put("userSibling1Name", userSibling1.getRelativeName());
 
-    String maternalGrandmotherName = newUser.getRelativeName(relList, 12);
-    model.put("maternalGrandmotherName", maternalGrandmotherName);
+    Relative userSibling2 = newUser.getRelative(20);
+    model.put("userSibling2Name", userSibling2.getRelativeName());
 
-    String mothersSibling1Name = newUser.getRelativeName(relList, 13);
-    model.put("mothersSibling1Name", mothersSibling1Name);
+    Relative maternalGrandfather = newUser.getRelative(11);
+    model.put("maternalGrandfatherName", maternalGrandfather.getRelativeName());
 
-    String mothersSibling2Name = newUser.getRelativeName(relList, 14);
-    model.put("mothersSibling2Name", mothersSibling2Name);
+    Relative maternalGrandmother = newUser.getRelative(12);
+    model.put("maternalGrandmotherName", maternalGrandmother.getRelativeName());
 
-    String mothersSibling1Kid1Name = newUser.getRelativeName(relList, 15);
-    model.put("mothersSibling1Kid1Name", mothersSibling1Kid1Name);
+    Relative mothersSibling1 = newUser.getRelative(13);
+    model.put("mothersSibling1Name", mothersSibling1.getRelativeName());
 
-    String mothersSibling1Kid2Name = newUser.getRelativeName(relList, 16);
-    model.put("mothersSibling1Kid2Name", mothersSibling1Kid2Name);
+    Relative mothersSibling2 = newUser.getRelative(14);
+    model.put("mothersSibling2Name", mothersSibling2.getRelativeName());
 
-    String mothersSibling2Kid1Name = newUser.getRelativeName(relList, 17);
-    model.put("mothersSibling2Kid1Name", mothersSibling2Kid1Name);
+    Relative mothersSibling1Kid1 = newUser.getRelative(15);
+    model.put("mothersSibling1Kid1Name", mothersSibling1Kid1.getRelativeName());
 
-    String mothersSibling2Kid2Name = newUser.getRelativeName(relList, 18);
-    model.put("mothersSibling2Kid2Name", mothersSibling2Kid2Name);
-    model.put("userName", newUser);
+    Relative mothersSibling1Kid2 = newUser.getRelative(16);
+    model.put("mothersSibling1Kid2Name", mothersSibling1Kid2.getRelativeName());
 
-    model.put("template", "templates/tree.vtl");
-    return new ModelAndView(model, layout);
+    Relative mothersSibling2Kid1 = newUser.getRelative(17);
+    model.put("mothersSibling2Kid1Name", mothersSibling2Kid1.getRelativeName());
+
+    Relative mothersSibling2Kid2 = newUser.getRelative(18);
+    model.put("mothersSibling2Kid2Name", mothersSibling2Kid2.getRelativeName());
+
+    model.put("user", newUser);
+
+    model.put("template", "templates/updateTree.vtl");
+    return new ModelAndView(model,layout);
   }, new VelocityTemplateEngine());
+
+  post("familyForm/:id/submitUpdate", (request, response) -> {
+    Map<String, Object> model = new HashMap<String, Object>();
+    User newUser = User.find(Integer.parseInt(request.params("id")));
+
+    String father = request.queryParams("father");
+    String fathersFather = request.queryParams("fathersFather");
+    String fathersMother = request.queryParams("fathersMother");
+    String fathersSibling1 = request.queryParams("fathersSibling1");
+    String fathersSibling2 = request.queryParams("fathersSibling2");
+    String fathersSibling1Kid1 = request.queryParams("fathersSibling1Kid1");
+    String fathersSibling1Kid2 = request.queryParams("fathersSibling1Kid2");
+    String fathersSibling2kid1 = request.queryParams("fathersSibling2kid1");
+    String fathersSibling2kid2 = request.queryParams("fathersSibling2kid2");
+    String mother = request.queryParams("mother");
+    String mothersFather = request.queryParams("mothersFather");
+    String mothersMother = request.queryParams("mothersMother");
+    String mothersSibling1 = request.queryParams("mothersSibling1");
+    String mothersSibling2 = request.queryParams("mothersSibling2");
+    String mothersSibling1Kid1 = request.queryParams("mothersSibling1Kid1");
+    String mothersSibling1Kid2 = request.queryParams("mothersSibling1Kid2");
+    String mothersSibling2kid1 = request.queryParams("mothersSibling2kid1");
+    String mothersSibling2kid2 = request.queryParams("mothersSibling2kid2");
+    String userSibling1 = request.queryParams("userSibling1");
+    String userSibling2 = request.queryParams("userSibling2");
+
+    Relative currentFather = newUser.getRelative(1);
+    currentFather.update(father);
+
+    Relative currentMother= newUser.getRelative(10);
+    currentMother.update(mother);
+
+    Relative currentPaternalGrandfather = newUser.getRelative(2);
+    currentPaternalGrandfather.update(fathersFather);
+
+    Relative currentPaternalGrandmother = newUser.getRelative(3);
+    currentPaternalGrandmother.update(fathersMother);
+
+    Relative currentFathersSibling1 = newUser.getRelative(4);
+    currentFathersSibling1.update(fathersSibling1);
+
+    Relative currentFathersSibling2 = newUser.getRelative(5);
+    currentFathersSibling2.update(fathersSibling2);
+
+    Relative currentFathersSibling1Kid1 = newUser.getRelative(6);
+    currentFathersSibling1Kid1.update(fathersSibling1Kid1);
+
+    Relative currentFathersSibling1Kid2 = newUser.getRelative(7);
+    currentFathersSibling1Kid2.update(fathersSibling1Kid2);
+
+    Relative currentFathersSibling2Kid1 = newUser.getRelative(8);
+    currentFathersSibling2Kid1.update(fathersSibling2kid1);
+
+    Relative currentFathersSibling2Kid2 = newUser.getRelative(9);
+    currentFathersSibling2Kid2.update(fathersSibling2kid2);
+
+    Relative currentMaternalGrandfather = newUser.getRelative(11);
+    currentMaternalGrandfather.update(mothersFather);
+
+    Relative currentMaternalGrandmother = newUser.getRelative(12);
+    currentMaternalGrandmother.update(mothersMother);
+
+    Relative currentMothersSibling1 = newUser.getRelative(13);
+    currentMothersSibling1.update(mothersSibling1);
+
+    Relative currentMothersSibling2 = newUser.getRelative(14);
+    currentMothersSibling2.update(mothersSibling2);
+
+    Relative currentMothersSibling1Kid1 = newUser.getRelative(15);
+    currentMothersSibling1Kid1.update(mothersSibling1Kid1);
+
+    Relative currentMothersSibling1Kid2 = newUser.getRelative(16);
+    currentMothersSibling1Kid2.update(mothersSibling1Kid2);
+
+    Relative currentMothersSibling2Kid1 = newUser.getRelative(17);
+    currentMothersSibling2Kid1.update(mothersSibling2kid1);
+
+    Relative currentMothersSibling2Kid2 = newUser.getRelative(18);
+    currentMothersSibling2Kid2.update(mothersSibling2kid2);
+
+    Relative currentUserSibling1 = newUser.getRelative(19);
+    currentUserSibling1.update(userSibling1);
+
+    Relative currentUserSibling2 = newUser.getRelative(20);
+    currentUserSibling2.update(userSibling2);
+
+
+    response.redirect("/viewTree/" + newUser.getId());
+    return null;
+  });
   }
 }

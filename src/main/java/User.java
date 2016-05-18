@@ -7,7 +7,7 @@ public class User{
   private String password;
   private static boolean userNameCheck;
   private String relName;
-  private String momName;
+  private Relative thisRel;
 
   public User(String userName, String pass){
     user_name = userName;
@@ -49,14 +49,16 @@ public class User{
     }
   }
 
-  public String getRelativeName(List<Relative> relList, int relTypeId){
-    for(Relative rel : relList){
-      if(rel.getRelationTypeId() == relTypeId){
-        relName = rel.getRelativeName();
-        break;
-      }
+
+  public Relative getRelative(int relTypeId){
+    try(Connection con = DB.sql2o.open()){
+      String sql = "SELECT * FROM relatives WHERE (relation_type_id = :relTypeId) AND (user_id = :id)";
+      Relative newRelative = con.createQuery(sql)
+        .addParameter("relTypeId", relTypeId)
+        .addParameter("id", this.id)
+        .executeAndFetchFirst(Relative.class);
+      return newRelative;
     }
-    return relName;
   }
 
   public void save(){
@@ -84,7 +86,7 @@ public class User{
      } else {
        User newUser = (User) otherUser;
        return this.getUserName().equals(newUser.getUserName()) &&
-              this.getPassword() == newUser.getPassword();
+              this.getPassword().equals(newUser.getPassword());
      }
    }
 
