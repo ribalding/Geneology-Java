@@ -4,6 +4,32 @@ body {
   background-repeat: repeat;
   background-attachment: fixed;
 }
+img {
+  background-color: white;
+
+}
+.img-circle {
+  max-width: 6em;
+  max-height: 6em;
+  min-width: 6em;
+  min-height: 6em;
+  background-color: white;
+  box-shadow: 6px 6px 7px #eaeaea;
+}
+
+.img-responsive {
+  max-width: 6em;
+  max-height: 6em;
+  min-width: 6em;
+  min-height: 6em;
+}
+
+.img-center {
+  max-width: 6em;
+  max-height: 6em;
+  min-width: 6em;
+  min-height: 6em;
+}
 
 .centered {
     text-align: center;
@@ -15,8 +41,9 @@ h6 {
 h4{
   color: white;
 }
+
 .col-xs-6 {
-  background-color: transparent;
+  /*background-color: transparent;*/
   color: white;
   padding-bottom: 1.5em;
   padding-top: .5em;
@@ -24,6 +51,7 @@ h4{
 
 .font {
   font-family: 'Poiret One', cursive;
+  font-style: bold;
 }
 
 .header {
