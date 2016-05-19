@@ -1,83 +1,83 @@
-<h1 class="centered header">Here is Your Family Tree</h1>
+<h1 class="centered header">Here is Your Family Tree $userName.getUserName()</h1>
 
 <div class="row treeMargin">
   <div class="col-xs-2 col-xs-offset-3 centered">
-    <h4 class="font gpa animated bounceInLeft centered"><span><img src=$paternalGrandfather.getImg() class="img-responsive img-circle img-center">$paternalGrandfather.getRelativeName()</span></h4>
+    <h4 class="font gpa animated bounceInLeft centered"><a href="/addImg/$paternalGrandfather.getId()"><img src=$paternalGrandfather.getImg() class="img-responsive img-circle img-center"></a></br>$paternalGrandfather.getRelativeName()</span></h4>
 
-    <h4 class="font gpa"><span><img src=$paternalGrandmother.getImg() class="img-responsive img-circle img-center">$paternalGrandmother.getRelativeName()</img></span></h4>
+    <h4 class="font gpa animated bounceInLeft"><a href="/addImg/$paternalGrandmother.getId()"<img src=$paternalGrandmother.getImg() class="img-responsive img-circle img-center" ></a></br>$paternalGrandmother.getRelativeName()</img></span></h4>
   </div>
   <div class="col-xs-2 col-xs-offset-2 centered">
-    <h4 class="font gma animated bounceInRight centered"><span><img src=$maternalGrandfather.getImg() class="img-responsive img-circle img-center">$maternalGrandfather.getRelativeName()</img></span></h4>
+    <h4 class="font gma animated bounceInRight centered"><a href="/addImg/$maternalGrandfather.getId()"<img src=$maternalGrandfather.getImg() class="img-responsive img-circle img-center" ><a/></br>$maternalGrandfather.getRelativeName()</img></span></h4>
 
-    <h4 class="font gma"><span><img href=$maternalGrandmother.getImg() class="img-responsive img-circle img-center">$maternalGrandmother.getRelativeName()</img></span></h4>
+    <h4 class="font gma animated bounceInRight"><a href="/addImg/$maternalGrandmother.getId()"<img href=$maternalGrandmother.getImg() class="img-responsive img-circle img-center" ></a></br>$maternalGrandmother.getRelativeName()</img></span></h4>
   </div>
 </div>
 
-<br><br><br><br><br>
+<br>
 
 <div class="row">
   <div class="col-xs-2">
-    <h4 class="font dadSib1 animated fadeInUpBig centered"><span><img src=$fathersSibling1.getImg() class="img-responsive img-circle img-center">$fathersSibling1.getRelativeName()</img></span></h4>
+    <h4 class="font dadSib1 animated fadeInUpBig centered"><a href="/addImg/$fathersSibling1.getId()"<img src=$fathersSibling1.getImg() class="img-responsive img-circle img-center" ></a></br>$fathersSibling1.getRelativeName()</img></span></h4>
   </div>
   <div class="col-xs-2">
-    <h4 class="font dadSib2 animated fadeInDownBig centered"><span><img src=$fathersSibling2.getImg() class="img-responsive img-circle img-center">$fathersSibling2.getRelativeName()</img></span></h4>
+    <h4 class="font dadSib2 animated fadeInDownBig centered"><a href="/addImg/$fathersSibling2.getId()"<img src=$fathersSibling2.getImg() class="img-responsive img-circle img-center" ></a></br>$fathersSibling2.getRelativeName()</img></span></h4>
   </div>
   <div class="col-xs-2">
-    <h4 class="font dad animated flipInY centered"><span><img src=$father.getImg() class="img-responsive img-circle img-center">$father.getRelativeName()</img></span></h4>
+    <h4 class="font dad animated flipInY centered"><a href="/addImg/$father.getId()"<img src=$father.getImg() class="img-responsive img-circle img-center" ></a></br>$father.getRelativeName()</img></span></h4>
   </div>
   <div class="col-xs-2">
-    <h4 class="font mom animated flipInY centered"><span><span><img src=$mother.getImg() class="img-responsive img-circle img-center">$mother.getRelativeName()</img></span></h4>
+    <h4 class="font mom animated flipInY centered"><a href="/addImg/$mother.getId()"<img src=$mother.getImg() class="img-responsive img-circle img-center" ><a/></br>$mother.getRelativeName()</img></span></h4>
   </div>
   <div class="col-xs-2">
-    <h4 class="font momSib1 animated rotateIn centered"><span><img src=$mothersSibling1.getImg() class="img-responsive img-circle img-center">$mothersSibling1.getRelativeName()</img></span></h4>
+    <h4 class="font momSib1 animated rotateIn centered"><a href="/addImg/$mothersSibling1.getId()"<img src=$mothersSibling1.getImg() class="img-responsive img-circle img-center" ><a/></br>$mothersSibling1.getRelativeName()</img></span></h4>
   </div>
   <div class="col-xs-2">
-    <h4 class="font momSib2 animated rotateInDownRight centered"><span><img src=$mothersSibling2.getImg() class="img-responsive img-circle img-center">$mothersSibling2.getRelativeName()</img></span></h4>
+    <h4 class="font momSib2 animated rotateInDownRight centered"><a href="/addImg/$mothersSibling2.getId()"<img src=$mothersSibling2.getImg() class="img-responsive img-circle img-center" ></a></br>$mothersSibling2.getRelativeName()</img></span></h4>
   </div>
 </div>
 
-<br><br><br><br><br><br>
+<br>
 
 <div class="row">
   <div class="col-xs-1">
-    <h4 class="font cousin animated rollIn"><span><img src=$fathersSibling1Kid1.getImg() class="img-responsive img-circle img-center">$fathersSibling1Kid1.getRelativeName()</img></span></h4>
+    <h4 class="font cousin animated rollIn"><a href="/addImg/$fathersSibling1Kid1.getId()"<img src=$fathersSibling1Kid1.getImg() class="img-responsive img-circle img-center" ></a></br>$fathersSibling1Kid1.getRelativeName()</img></span></h4>
   </div>
   <div class="col-xs-1">
-    <h4 class="font cousin animated rollIn"><span><img src=$fathersSibling1Kid2.getImg() class="img-responsive img-circle img-center">$fathersSibling1Kid2.getRelativeName()</img></span></h4>
+    <h4 class="font cousin animated rollIn"><a href="/addImg/$fathersSibling1Kid2.getId()"<img src=$fathersSibling1Kid2.getImg() class="img-responsive img-circle img-center" ></a></br>$fathersSibling1Kid2.getRelativeName()</img></span></h4>
   </div>
   <div class="col-xs-1">
-    <h4 class="font cousin animated rollIn"><span><img src=$fathersSibling2Kid1.getImg() class="img-responsive img-circle img-center">$fathersSibling2Kid1.getRelativeName()</img></span></h4>
+    <h4 class="font cousin animated rollIn"><a href="/addImg/$fathersSibling2Kid1.getId()"<img src=$fathersSibling2Kid1.getImg() class="img-responsive img-circle img-center" ></a></br>$fathersSibling2Kid1.getRelativeName()</img></span></h4>
   </div>
   <div class="col-xs-1">
-    <h4 class="font cousin animated rollIn"><span><img src=$fathersSibling2Kid2.getImg() class="img-responsive img-circle img-center">$fathersSibling2Kid2.getRelativeName()</img></span></h4>
+    <h4 class="font cousin animated rollIn"><a href="/addImg/$fathersSibling2Kid2.getId()"<img src=$fathersSibling2Kid2.getImg() class="img-responsive img-circle img-center"></a></br>$fathersSibling2Kid2.getRelativeName()</img></span></h4>
   </div>
   <div class="col-xs-4">
   </div>
   <div class="col-xs-1">
-    <h4 class="font cousin animated rollIn"><span><img src=$mothersSibling1Kid1.getImg() class="img-responsive img-circle img-center">$mothersSibling1Kid1.getRelativeName()</img></span></h4>
+    <h4 class="font cousin animated rollIn"><a href="/addImg/$mothersSibling1Kid1.getId()"<img src=$mothersSibling1Kid1.getImg() class="img-responsive img-circle img-center" ></a></br>$mothersSibling1Kid1.getRelativeName()</img></span></h4>
   </div>
   <div class="col-xs-1">
-    <h4 class="font cousin animated rollIn"><span><img src=$$mothersSibling1Kid2.getImg() class="img-responsive img-circle img-center">$mothersSibling1Kid2.getRelativeName()</img></span></h4>
+    <h4 class="font cousin animated rollIn"><a href="/addImg/$mothersSibling1Kid2.getId()"<img src=$$mothersSibling1Kid2.getImg() class="img-responsive img-circle img-center" ></a></br>$mothersSibling1Kid2.getRelativeName()</img></span></h4>
   </div>
   <div class="col-xs-1">
-    <h4 class="font cousin animated rollIn"><span><img src=$mothersSibling2Kid1.getImg() class="img-responsive img-circle img-center">$mothersSibling2Kid1.getRelativeName()</img></span></h4>
+    <h4 class="font cousin animated rollIn"><a href="/addImg/$mothersSibling2Kid1.getId()"<img src=$mothersSibling2Kid1.getImg() class="img-responsive img-circle img-center" ></a></br>$mothersSibling2Kid1.getRelativeName()</img></span></h4>
   </div>
   <div class="col-xs-1">
-    <h4 class="font cousin animated rollIn"><span><img src=$mothersSibling2Kid2.getImg() class="img-responsive img-circle img-center">$mothersSibling2Kid2.getRelativeName()</img></span></h4>
+    <h4 class="font cousin animated rollIn"><a href="/addImg/$mothersSibling2Kid2.getId()"<img src=$mothersSibling2Kid2.getImg() class="img-responsive img-circle img-center" ></a></br>$mothersSibling2Kid2.getRelativeName()</img></span></h4>
   </div>
 </div>
 
-<br><br><br><br><br>
+
 
 <div class="row centered">
   <div class="col-xs-2 col-xs-offset-3">
-    <h4 class="font animated fadeInUp userSiblings"><span><img src=$userSibling1.getImg() class="img-responsive img-circle img-center">$userSibling1.getRelativeName()</img></span></h4>
+    <h4 class="font animated fadeInUp userSiblings"><a href="/addImg/$userSibling1.getId()"<img src=$userSibling1.getImg() class="img-responsive img-circle img-center " ></a></br>$userSibling1.getRelativeName()</img></span></h4>
   </div>
   <div class="col-xs-2">
-    <h4 class="font animated fadeInUp userSiblings"><span><img src=$userName.getImg() class="img-responsive img-circle img-center">$userName.getUserName()</img></span></h4>
+    <h4 class="font animated fadeInUp userSiblings"><a href="/addUserImg/$userName.getUserName()"<img src=$userName.getImg() class="img-responsive img-circle img-center"></a></br>$userName.getUserName()</img></span></h4>
   </div>
   <div class="col-xs-2">
-    <h4 class="font animated fadeInUp userSiblings"><span><img src=$userSibling2.getImg() class="img-responsive img-circle img-center">$userSibling2.getRelativeName()</img></span></h4>
+    <h4 class="font animated fadeInUp userSiblings"><a href="/addImg/$userSibling2.getId()"<img src=$userSibling2.getImg() class="img-responsive img-circle img-center" ></a></br>$userSibling2.getRelativeName()</img></span></h4>
   </div>
 </div>
 <div class="row">

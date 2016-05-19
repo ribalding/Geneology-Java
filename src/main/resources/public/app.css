@@ -8,27 +8,50 @@ img {
   background-color: white;
 
 }
+h1 {
+  font-size: 48pt;
+  font-family: 'Poiret One', cursive;
+  color: #eaeaea;
+}
+h2 {
+  font-family: 'Poiret One', cursive;
+  color: #eaeaea;
+  font-size: 36pt
+}
+h4 {
+  font-family: 'Poiret One', cursive;
+  color: #eaeaea;
+}
+h3 {
+  font-size: 28pt;
+  font-family: 'Poiret One', cursive;
+  color: #eaeaea;
+}
+label {
+  font-family: 'Poiret One', cursive;
+  color: #eaeaea;
+}
 .img-circle {
-  max-width: 6em;
-  max-height: 6em;
-  min-width: 6em;
-  min-height: 6em;
+  max-width: 7em;
+  max-height: 7em;
+  min-width: 7em;
+  min-height: 7em;
   background-color: white;
   box-shadow: 6px 6px 7px #eaeaea;
 }
 
 .img-responsive {
-  max-width: 6em;
-  max-height: 6em;
-  min-width: 6em;
-  min-height: 6em;
+  max-width: 7em;
+  max-height: 7em;
+  min-width: 7em;
+  min-height: 7em;
 }
 
 .img-center {
-  max-width: 6em;
-  max-height: 6em;
-  min-width: 6em;
-  min-height: 6em;
+  max-width: 7em;
+  max-height: 7em;
+  min-width: 7em;
+  min-height: 7em;
 }
 
 .centered {
@@ -38,10 +61,6 @@ img {
 h6 {
   color: #eaeaea;
 }
-h4{
-  color: white;
-}
-
 .col-xs-6 {
   /*background-color: transparent;*/
   color: white;
@@ -112,10 +131,10 @@ input {
 
 
 .gpa {
-
+ -webkit-animation-delay: .2s;
 }
 .gma {
- -webkit-animation-delay: .5s;
+ -webkit-animation-delay: .55s;
 }
 .dad {
   -webkit-animation-delay: 1s;
