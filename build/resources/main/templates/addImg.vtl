@@ -2,6 +2,6 @@
 
 <form action="/submitImg/$relative.getId()" method="post">
   <label for="image_input">Add The URL For Your Image Here</label>
-  <input type="text" id="image_input" name="image_input">
+  <input type="text" id="image_input" name="image_input" value=$relative.getImg()>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

@@ -53,7 +53,9 @@ public class App{
     User newUser = User.findByName(userName);
     if (newUser.getPassword().equals(userPassword)){
       model.put("user", newUser);
+      model.put("treeExists", newUser.getTreeExists());
       model.put("template", "templates/accountHome.vtl");
+      System.out.println(newUser.getTreeExists());
     } else {
       model.put("template", "templates/index.vtl");
       boolean failedLogin = true;
@@ -387,6 +389,23 @@ public class App{
     String imagePath = request.queryParams("image_input");
     newRelative.addImg(imagePath);
     User newUser = User.find(newRelative.getUserId());
+    response.redirect("/viewTree/" + newUser.getId());
+    return null;
+  });
+
+  get("/addUserImg/:id", (request, response) -> {
+    Map<String, Object> model = new HashMap<String, Object>();
+    User newUser = User.find(Integer.parseInt(request.params("id")));
+    model.put("user", newUser);
+    model.put("template", "templates/addUserImg.vtl");
+    return new ModelAndView(model, layout);
+  }, new VelocityTemplateEngine());
+
+  post("submitUserImg/:id", (request, response) -> {
+    Map<String, Object> model = new HashMap<String, Object>();
+    User newUser = User.find(Integer.parseInt(request.params("id")));
+    String imagePath = request.queryParams("image_input");
+    newUser.addImg(imagePath);
     response.redirect("/viewTree/" + newUser.getId());
     return null;
   });
