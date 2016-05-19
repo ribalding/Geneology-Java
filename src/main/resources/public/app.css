@@ -4,6 +4,27 @@ body {
   background-repeat: repeat;
   background-attachment: fixed;
 }
+.img-circle {
+  max-width: 4em;
+  max-height: 4em;
+  min-width: 4em;
+  min-height: 4em;
+  background-color: inherit;
+}
+
+.img-responsive {
+  max-width: 4em;
+  max-height: 4em;
+  min-width: 4em;
+  min-height: 4em;
+}
+
+.img-center {
+  max-width: 4em;
+  max-height: 4em;
+  min-width: 4em;
+  min-height: 4em;
+}
 
 .centered {
     text-align: center;
@@ -16,7 +37,7 @@ h4{
   color: white;
 }
 .col-xs-5 {
-  background-color: transparent;
+  /*background-color: transparent;*/
   color: white;
   padding-bottom: 1.5em;
   padding-top: .5em;
