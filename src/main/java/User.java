@@ -8,12 +8,12 @@ public class User{
   private static boolean userNameCheck;
   private String relName;
   private Relative thisRel;
-  private boolean treeExists;
+  private boolean tree_exists;
 
   public User(String userName, String pass){
     user_name = userName;
     password = pass;
-    treeExists = false;
+    tree_exists = false;
   }
 
   public String getUserName(){
@@ -29,11 +29,18 @@ public class User{
   }
 
   public void treeNowExists(){
-    treeExists = true;
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE users SET tree_exists = :tree_exists WHERE id =:id";
+      con.createQuery(sql)
+      .addParameter("tree_exists", true)
+      .addParameter("id", this.id)
+      .executeUpdate();
+    }
+    this.tree_exists = true;
   }
 
   public boolean getTreeExists(){
-    return treeExists;
+    return tree_exists;
   }
 
   public static boolean validate(String fullName, String pass, String confirmPassword){
@@ -72,11 +79,12 @@ public class User{
   }
 
   public void save(){
-    String sql = "INSERT INTO users (user_name, password) VALUES (:user_name, :password);";
+    String sql = "INSERT INTO users (user_name, password, tree_exists) VALUES (:user_name, :password, :tree_exists);";
     try(Connection con = DB.sql2o.open()){
       this.id = (int) con.createQuery(sql, true)
       .addParameter("user_name", this.user_name)
       .addParameter("password", this.password)
+      .addParameter("tree_exists", false)
       .executeUpdate()
       .getKey();
     }

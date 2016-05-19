@@ -1,7 +1,4 @@
 <h1>Welcome $user.getUserName()</h1>
 
-#if(!($user.getTreeExists()))
 <a href="/familyForm/$user.getId()">Create Your Tree</a>
-#else
 <a href="/viewTree/$user.getId()">View Tree</a>
-#end

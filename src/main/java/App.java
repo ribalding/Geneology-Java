@@ -53,7 +53,9 @@ public class App{
     User newUser = User.findByName(userName);
     if (newUser.getPassword().equals(userPassword)){
       model.put("user", newUser);
+      model.put("treeExists", newUser.getTreeExists());
       model.put("template", "templates/accountHome.vtl");
+      System.out.println(newUser.getTreeExists());
     } else {
       model.put("template", "templates/index.vtl");
       boolean failedLogin = true;
