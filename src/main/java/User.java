@@ -9,6 +9,7 @@ public class User{
   private String relName;
   private Relative thisRel;
   private boolean tree_exists;
+  private String img;
 
   public User(String userName, String pass){
     user_name = userName;
@@ -26,6 +27,21 @@ public class User{
 
   public int getId(){
     return id;
+  }
+
+  public void addImg(String image){
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE users SET img = :img WHERE id = :id";
+      con.createQuery(sql)
+      .addParameter("img", image)
+      .addParameter("id", this.id)
+      .executeUpdate();
+    }
+    this.img = image;
+  }
+
+  public String getImg(){
+    return this.img;
   }
 
   public void treeNowExists(){

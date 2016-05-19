@@ -1,0 +1,7 @@
+<h1>Add an Image for $user.getUserName()</h1>
+
+<form action="/submitUserImg/$user.getId()" method="post">
+  <label for="image_input">Add The URL For Your Image Here</label>
+  <input type="text" id="image_input" name="image_input" value=$user.getImg()>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

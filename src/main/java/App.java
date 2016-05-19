@@ -392,5 +392,22 @@ public class App{
     response.redirect("/viewTree/" + newUser.getId());
     return null;
   });
+
+  get("/addUserImg/:id", (request, response) -> {
+    Map<String, Object> model = new HashMap<String, Object>();
+    User newUser = User.find(Integer.parseInt(request.params("id")));
+    model.put("user", newUser);
+    model.put("template", "templates/addUserImg.vtl");
+    return new ModelAndView(model, layout);
+  }, new VelocityTemplateEngine());
+
+  post("submitUserImg/:id", (request, response) -> {
+    Map<String, Object> model = new HashMap<String, Object>();
+    User newUser = User.find(Integer.parseInt(request.params("id")));
+    String imagePath = request.queryParams("image_input");
+    newUser.addImg(imagePath);
+    response.redirect("/viewTree/" + newUser.getId());
+    return null;
+  });
   }
 }
