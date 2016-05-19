@@ -7,6 +7,7 @@ public class Relative{
   private String relation;
   private int user_id;
   private int relation_type_id;
+  private String img;
 
   public Relative(String relative_name, String relation, int user_id, int relation_type_id){
     this.relative_name = relative_name;
@@ -33,6 +34,21 @@ public class Relative{
 
   public int getId(){
     return this.id;
+  }
+
+  public String getImg(){
+    return this.img;
+  }
+
+  public void addImg(String image){
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE relatives SET img = :img WHERE id = :id";
+      con.createQuery(sql)
+      .addParameter("img", image)
+      .addParameter("id", this.id)
+      .executeUpdate();
+    }
+    this.img = image;
   }
 
   public void save(){
@@ -68,7 +84,7 @@ public class Relative{
     }
   }
 
-  public static Relative find(int id, int user_id){
+  public static Relative find(int id){
     try (Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM relatives WHERE id = :id";
       Relative newRelative = con.createQuery(sql)

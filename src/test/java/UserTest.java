@@ -89,4 +89,15 @@ public class UserTest{
     Relative foundRelative = newUser.getRelative(10);
     assertEquals("Janice", foundRelative.getRelativeName());
   }
+
+
+  @Test
+  public void addImg_InsertsImgIntoDB(){
+    User newUser = new User("Ryan", "stuff");
+    newUser.save();
+    Relative newRelative = new Relative("Jeff", "Father", newUser.getId(), 1);
+    newRelative.save();
+    newRelative.addImg("test");
+    assertEquals("test", newRelative.getImg());
+  }
 }
