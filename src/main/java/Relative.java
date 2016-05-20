@@ -14,6 +14,7 @@ public class Relative{
     this.relation = relation;
     this.user_id = user_id;
     this.relation_type_id = relation_type_id;
+    this.img = "https://upload.wikimedia.org/wikipedia/commons/3/33/White_square_with_question_mark.png";
   }
 
   public String getRelativeName(){
@@ -52,10 +53,11 @@ public class Relative{
   }
 
   public void save(){
-    String sql = "INSERT INTO relatives (relative_name, relation, user_id, relation_type_id) VALUES (:relative_name, :relation, :user_id, :relation_type_id);";
+    String sql = "INSERT INTO relatives (relative_name, relation, user_id, relation_type_id, img) VALUES (:relative_name, :relation, :user_id, :relation_type_id, :img);";
     try(Connection con = DB.sql2o.open()){
       this.id = (int) con.createQuery(sql, true)
       .addParameter("relative_name", this.relative_name)
+      .addParameter("img", this.img)
       .addParameter("relation", this.relation)
       .addParameter("user_id", this.user_id)
       .addParameter("relation_type_id", this.relation_type_id)
@@ -80,6 +82,7 @@ public class Relative{
       return this.getRelativeName().equals(newRelative.getRelativeName()) &&
              this.getUserId() == newRelative.getUserId() &&
              this.getRelation().equals(newRelative.getRelation()) &&
+             this.getImg().equals(newRelative.getImg()) &&
              this.getRelationTypeId() == newRelative.getRelationTypeId();
     }
   }
