@@ -109,7 +109,7 @@ input{
 }
 
 .treeMargin {
-  margin-top: 10em;
+  margin-top: 4em;
 }
 
 input {
@@ -119,12 +119,13 @@ input {
 .updateClear {
   max-height: 3em;
   text-align: center;
-  margin-top: 30%;
+  margin-top: 7%;
+  margin-bottom: 10px;
 }
 
-
-
-
+.btn-danger {
+  margin-left: 3px;
+}
 
 
 
